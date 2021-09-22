@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.9.0</Version>
+    <Version>0.9.1</Version>
     <Description>This library is forked from https://www.xml-rpc.net/, v2.5.0 Release.
 
 Copyright (C) 2001-2010 Charles Cook (chascook@gmail.com)
