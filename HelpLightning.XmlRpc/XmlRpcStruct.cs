@@ -1,4 +1,4 @@
-/* 
+﻿/* 
 XML-RPC.NET library
 Copyright (c) 2001-2009, Charles Cook <charlescook@cookcomputing.com>
 
@@ -38,7 +38,7 @@ namespace HelpLightning.XmlRpc
       {
         throw new ArgumentException("XmlRpcStruct key must be a string.");
       }
-      if (XmlRpcServiceInfo.GetXmlRpcType(value.GetType())
+      if (value != null && XmlRpcServiceInfo.GetXmlRpcType(value.GetType())
           == XmlRpcType.tInvalid)
       {
         throw new ArgumentException(String.Format(
