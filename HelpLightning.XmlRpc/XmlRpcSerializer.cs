@@ -312,7 +312,7 @@ namespace HelpLightning.XmlRpc
             }
             request.mi = null;
             ParameterInfo[] pis = new ParameterInfo[0];
-            
+
             XmlNode paramsNode = SelectSingleNode(callNode, "params");
             if (paramsNode == null)
             {
@@ -322,7 +322,7 @@ namespace HelpLightning.XmlRpc
             XmlNode[] paramNodes = SelectNodes(paramsNode, "param");
             int paramsPos = GetParamsPos(pis);
             int minParamCount = paramsPos == -1 ? pis.Length : paramsPos;
-            
+
             ParseStack parseStack = new ParseStack("request");
             // TODO: use global action setting
             MappingAction mappingAction = MappingAction.Error;
@@ -571,6 +571,16 @@ namespace HelpLightning.XmlRpc
             try
             {
                 xtw.WriteStartElement("", "value", "");
+                if (o == null)
+                {
+                    // support of nil
+                    // https://web.archive.org/web/20050911054235/http://ontosys.com/xml-rpc/extensions.php
+                    xtw.WriteStartElement("", "nil", "");
+                    xtw.WriteEndElement();
+                    xtw.WriteEndElement();
+                    return;
+                }
+
                 XmlRpcType xType = XmlRpcServiceInfo.GetXmlRpcType(o.GetType());
                 if (xType == XmlRpcType.tArray)
                 {
@@ -915,6 +925,14 @@ namespace HelpLightning.XmlRpc
                     retObj = ParseDateTime(node, valType, parseStack, mappingAction);
                     ParsedType = typeof(DateTime);
                     ParsedArrayType = typeof(DateTime[]);
+                }
+                else if (node.Name == "nil")
+                {
+                    // support of nil
+                    // https://web.archive.org/web/20050911054235/http://ontosys.com/xml-rpc/extensions.php
+                    retObj = null;
+                    ParsedType = typeof(object);
+                    ParsedArrayType = typeof(object[]);
                 }
                 else
                     throw new XmlRpcInvalidXmlRpcException(
