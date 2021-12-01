@@ -284,6 +284,18 @@ namespace HelpLightning.XmlRpc
             return DeserializeRequest(xdoc);
         }
 
+        public bool IsResponse(XmlDocument xdoc)
+        {
+            XmlNode methodResponseNode = SelectSingleNode(xdoc, "methodResponse");
+            return (methodResponseNode != null);
+        }
+
+        public bool IsRequest(XmlDocument xdoc)
+        {
+            XmlNode callNode = SelectSingleNode(xdoc, "methodCall");
+            return (callNode != null);
+        }
+
         public XmlRpcRequest DeserializeRequest(XmlDocument xdoc)
         {
             XmlRpcRequest request = new XmlRpcRequest();

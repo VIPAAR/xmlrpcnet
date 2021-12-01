@@ -1,3 +1,6 @@
+2021-12-01  Hale Xie  <hale.xie@helplightning.com>
+	* Provide methods to detect if a message is a response or request 
+
 0.9.1
 ==========
 2021-09-18  Hale Xie  <hale.xie@helplightning.com>
