@@ -1727,9 +1727,7 @@ namespace HelpLightning.XmlRpc
                 //   other yyyy-MM-ddThh:mm:ss
                 if (!DateTime8601.TryParseDateTime8601(s, out retVal))
                 {
-                    if (MapZerosDateTimeToMinValue && s.StartsWith("0000")
-                      && (s == "00000000T00:00:00" || s == "0000-00-00T00:00:00Z"
-                      || s == "00000000T00:00:00Z" || s == "0000-00-00T00:00:00"))
+                    if (MapZerosDateTimeToMinValue && s.StartsWith("0000"))
                         retVal = DateTime.MinValue;
                     else
                         throw new XmlRpcInvalidXmlRpcException(parseStack.ParseType

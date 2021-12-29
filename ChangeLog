@@ -1,7 +1,10 @@
+2021-12-29  Hale Xie  <hale.xie@helplightning.com>
+	* Decode a date in the format of '0000xxxxTxxxx' to the minimum date
+
 0.9.2
 ==========
 2021-12-01  Hale Xie  <hale.xie@helplightning.com>
-	* Provide methods to detect if a message is a response or request 
+	* Provide methods to detect if a message is a response or request
 
 0.9.1
 ==========
